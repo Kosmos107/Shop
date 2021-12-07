@@ -1,0 +1,68 @@
+
+.wrapper{
+    margin-top: 25px;
+    
+    }
+.link{
+    display: inline-block;
+    margin-right: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    
+    a{
+       font-family: inherit;
+        color: whitesmoke;
+        font-size: 16px;
+        text-decoration: none;   
+    }}
+.arrow{
+    display: inline-block;
+    color: inherit;
+    transform: rotate(90deg);
+    margin-left: 5px;
+    
+}
+.wrapperBlock{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    min-width: 210px;
+    padding-top: 15px;
+}
+.block{
+    position: relative;
+    margin: 0;
+    background-color: #2d2d2d;
+    transform: translate(0,-1%);
+    padding: 20px 15px;
+    li{
+        list-style-type: none;
+        margin-bottom: 10px;
+    }
+    a{
+        
+        font-size: 15px;
+    }
+    a:hover{
+        color: slategray;
+    }
+}
+.block::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.3px;
+    
+    background-color: slategray;
+    top:0;
+
+}
+.link:hover >a {
+color: slategray;
+}
+.link:hover .wrapperBlock{
+    opacity: 1;
+    visibility: visible;
+}

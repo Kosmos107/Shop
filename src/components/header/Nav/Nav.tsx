@@ -1,11 +1,13 @@
 import React from 'react'
-import Links from './Links'
+import Link from './Link'
 
+import s from "./Nav.module.scss"
 const Nav = () => {
     return (
-        <div>
-            <Links name={"женское"}/>
-            <Links name={"мужское"}/>
+        <div className={s.wrapper}>
+            <Link name={"Женщины"}/>
+            <Link name={"Мужчины"}/>
+            
         </div>
     )
 }
