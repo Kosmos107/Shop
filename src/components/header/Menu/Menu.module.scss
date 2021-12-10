@@ -105,7 +105,7 @@
 
 .Burger{
     &__wrapper{
-        display: block;
+        display: none;
         width: 50px;
         height: 50px;
         
@@ -118,6 +118,7 @@
         width: 100%;
         height: 10px;
         background-color: azure;
+        transition: all .3s ease;
         
     }
     &__line::after,&__line::before{
@@ -127,12 +128,31 @@
         width: 100%;
         height: 10px;
         background-color: skyblue;
+        transition: all .3s ease;
+        
+        
     }
     &__line::after{
         top: -15px;
     }
     &__line::before{
         top:15px;
+    }
+    &__active{
+        background-color: #2d2d2d;
+    }
+    &__active::after,&__active::before{
+        content: "";
+        background-color: white;
+        border-radius: 10px;
+    }
+    &__active::after{
+        
+         transform:translateY(15px) rotate(-45deg) ;
+        
+    }
+    &__active::before{
+       transform: translateY(-15px) rotate(45deg) ;
     }
 }
 
