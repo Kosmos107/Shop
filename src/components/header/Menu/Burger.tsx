@@ -6,19 +6,17 @@ import cn from "classnames"
 
 
 interface Burg{
-    change:()=>void,
-    active:boolean,
+    addMenu:()=>void,
     
 }
 
-const Burger:React.FC<Burg>= (props)=> {
-    console.log(props)
-    const classBurger = cn(s.Burger__line,{[s.Burger__active]:props.active})
+const Burger:React.FC<Burg>= ({addMenu})=> {
+    const classBurger = cn(s.Burger__line)
     
     
     
     return (
-        <div onClick={props.change} className={s.Burger__wrapper}>
+        <div onClick={addMenu}  className={s.Burger__wrapper}>
             <span className={classBurger}></span>
         </div>
     )

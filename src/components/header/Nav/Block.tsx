@@ -5,15 +5,13 @@ const arr:string[] =["Популярные","Одежда","Обувь","Акс�
 
 const Block = () => {
     return (
-    <div className={s.wrapperBlock}>
-        <ul className={s.block}>
+        <ul >
            {arr.map((arr)=>{
                return (
                    <li><a href="">{arr}</a></li>
                )
            })} 
         </ul>
-    </div>
     )
 }
 
