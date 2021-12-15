@@ -4,13 +4,16 @@ import {BsChevronDown,BsChevronUp} from "react-icons/bs";
 import {FiX} from "react-icons/fi"
 import s from "./Nav.module.scss"
 import classes from "classnames"
+import { FiSearch } from "react-icons/fi"
+import { AiOutlineHeart,AiOutlineUser } from "react-icons/ai";
+import {Link} from "react-router-dom"
 
 interface propsMenu{
     addMenu:()=>void,
     adapt:boolean
 }
 
-const Adaptiva:React.FC<propsMenu> = ({addMenu,adapt}) => {
+const MenuBurger:React.FC<propsMenu> = ({addMenu,adapt}) => {
     const [woman,setWoman] = useState<boolean>(false)
     const [man,setMan] = useState<boolean>(false)
     const adaptivClass = classes(s.Adaptiva,{[s.activeAdapt]:adapt})
@@ -26,6 +29,13 @@ const Adaptiva:React.FC<propsMenu> = ({addMenu,adapt}) => {
                 </div>
             </div>
             <div className={s.wrapperControls}>
+                <div className={s.Controls}>
+                    <Link to="/home"><AiOutlineUser/></Link>
+                    <Link to="/home" className={s.heart}><AiOutlineHeart/>
+                    <span>0</span>
+                    </Link>
+                </div>
+                <FiSearch style={{cursor:"pointer"}} className={s.search}/>
             </div>
             <div className={s.wrapperLinks}>
                 <div className={s.HeaderWrapperLinks}>
@@ -33,7 +43,7 @@ const Adaptiva:React.FC<propsMenu> = ({addMenu,adapt}) => {
                 </div>
                 <div className={s.AInner}>
                         <div  className={s.listContent}>
-                            <a href="">Женщины</a>
+                        <Link to="Ж">Женщины</Link>
                             {woman?<BsChevronUp onClick={():void=>f(setWoman,woman)} style={{cursor:"pointer",fontSize:"20px"}}/> 
                              :<BsChevronDown onClick={():void=>f(setWoman,woman)} style={{cursor:"pointer",fontSize:"20px"}} />} 
                         </div>
@@ -42,7 +52,7 @@ const Adaptiva:React.FC<propsMenu> = ({addMenu,adapt}) => {
                 </div>
                 <div className={s.AInner}>
                         <div  className={s.listContent}>
-                             <a  href="">Мужчины</a>
+                        <Link to="М">Мужчины</Link>
                              {man?<BsChevronUp onClick={():void=>f(setMan,man)} style={{cursor:"pointer",fontSize:"20px"}}/> 
                              :<BsChevronDown onClick={():void=>f(setMan,man)} style={{cursor:"pointer",fontSize:"20px"}} />}
                              
@@ -54,4 +64,4 @@ const Adaptiva:React.FC<propsMenu> = ({addMenu,adapt}) => {
     )
 }
 
-export default Adaptiva
+export default MenuBurger

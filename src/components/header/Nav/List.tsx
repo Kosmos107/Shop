@@ -1,18 +1,19 @@
 import React from 'react'
 import s from "./Nav.module.scss"
 import WBlock from "./WBlock"
+import {Link} from "react-router-dom"
 interface User {
     name:string
 }
 
-const Link = (props:User) => {
+const List = (props:User) => {
     return (
         <div className={s.link}>
-            <a href="">{props.name}<span className={s.arrow}>{">"}</span></a>
+            <Link to="/home">{props.name}<span className={s.arrow}>{">"}</span></Link>
             
             <WBlock/>
         </div>
     )
 }
 
-export default Link
+export default List

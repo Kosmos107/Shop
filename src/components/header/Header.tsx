@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import Menu from "./Menu/Menu"
 import Nav from "./Nav/Nav"
 import s from "./Header.module.scss"
-import Adaptiva from "./Nav/Adaptiva"
+import MenuBurger from "./Nav/MenuBurger"
 import classes from "classnames"
 
 const Header = ()=>{
@@ -14,7 +14,7 @@ const Header = ()=>{
         }
     return(
         <div className={s.wrapper}>
-            <Adaptiva adapt={adapt} addMenu={addMenu}/>
+            <MenuBurger adapt={adapt} addMenu={addMenu}/>
             <Menu addMenu={addMenu} />
             <Nav/>
         </div>

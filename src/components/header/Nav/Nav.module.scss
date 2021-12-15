@@ -100,7 +100,46 @@
     
 }
 .wrapperControls{
-    background-color: #434343
+    background-color: #434343;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+    color: azure;
+    font-size: 25px;
+    a{
+        color: azure;
+        text-decoration: none;
+    }
+    
+    div a{
+        display: inline-block;
+        font-size: 30px;
+        color: azure;
+        text-decoration: none;
+    }
+    
+    
+}
+.Controls{
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+}
+.heart{
+    position: relative;
+    span{
+        background-color: #525665;
+        position: absolute;
+        font-size: 14px;
+        top: -15%;
+        right: -37%;
+        border-radius: 100%;
+        padding: 1px 0.4em 3px;
+        font-weight: bold;
+        
+    }
 }
 .wrapperLinks{
     background-color: #2d2d2d;
@@ -141,6 +180,11 @@
     justify-content: space-between;
     
 }
+
+
+
+    
+
 
 
 
