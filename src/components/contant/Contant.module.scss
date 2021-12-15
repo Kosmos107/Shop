@@ -8,11 +8,22 @@
 .wall{
     display: flex;
     justify-content: space-between;
-    padding: 30px 60px ;
+    padding: 30px 60px 0 ;
     flex-wrap: wrap;
 }
 .card{
-   
+   display: block;
+   img{
+       max-width: 100%;
+   }
+}
+.brand{
+    display: flex;
+    padding: 0 30px ;
+    justify-content: space-around;
+    img{
+        width: 20%;
+    }
 }
 .slider{
 
@@ -21,4 +32,19 @@
     text-align: center;
     margin: 80px 0;
     border: 1px solid slateblue;
+}
+.size{}
+.name{}
+.price{}
+.product{
+    display: inline-block;
+    padding: 15px;
+    width: 150px;
+    margin:40px 25px ;
+    border: 3px solid sienna;
+}
+.shop{
+    width: 95%;
+    border: 1px solid steelblue;
+    margin: 0 auto;
 }
