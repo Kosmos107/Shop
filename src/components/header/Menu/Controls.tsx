@@ -14,7 +14,7 @@ const Controls = () => {
     return (
         <ul className={s.Controls__wrapper}>
             <li><Link to="/Catalog" ><img className={s.Controls__img} src={persona} alt="" /></Link></li>
-            <li><Link to="/Catalog"><img className={s.Controls__img} src={heart} alt="" />
+            <li><Link to="/Like"><img className={s.Controls__img} src={heart} alt="" />
                 <div className={s.Controls__notice}>0</div>
             </Link></li>
             <li><Link to="/Catalog"><img className={s.Controls__img} src={shop} alt="" />
