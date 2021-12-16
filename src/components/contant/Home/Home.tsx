@@ -12,6 +12,7 @@ import sports from "../../../img/sports.webp"
 import Sred from "../../../img/Sred.webp"
 import Wall from "../components/Wall"
 
+
 const Home = () => {
     return (
         <div className={s.WHome}>

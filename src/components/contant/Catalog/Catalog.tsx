@@ -15,9 +15,19 @@ const Catalog:React.FC<Info> = ({text="23",}) => {
     
     return (
         <div>
-           <div>
-               <div>{text}</div>
-               <Filter/>
+           <div className={s.control__panel}>
+               <div className={s.control__text}>{text}</div>
+               <div className={s.control__filter}>
+                   <Filter/>
+                    <select className={s.sorting}>
+                        <option value="">Cортировка</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
+                
+                    
+               </div>
            </div>
            <div className={s.shop}>
             {mass.map((arr)=>{
