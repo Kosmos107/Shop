@@ -7,20 +7,25 @@ import { BsHeart,BsHeartFill } from "react-icons/bs";
 interface Info {
     name:string,
     price:any,
-    size:string
-    width?:string
+    size:string,
+    width?:string,
+    like:boolean
 }
 
-const Product:React.FC<Info>= ({name,price,size,width="22%"}) => {
+const Product:React.FC<Info>= ({like,name,price,size,width="22%"}) => {
 
-    const [like,setLike]= useState(false)
+    const proverka =(e:any):void=>{
+        console.log(e)
+        console.log(e.target)
+    }
+    const [newlike,setNewlike]= useState(like)
 
    
     return (
         
-            <div style={{width:width}} className={s.product}>
+            <div onClick={proverka} style={{width:width}} className={s.product}>
                 <a className={s.product__inner} href="$"><img src={img} alt="" /></a>
-                    <span className={s.product__like} onClick={()=>setLike(like=>!like)} >{like?<BsHeartFill/>:<BsHeart/>}</span>
+                    <span className={s.product__like} onClick={()=>setNewlike(newlike=>!newlike)} >{newlike?<BsHeartFill/>:<BsHeart/>}</span>
                 <p className={s.name}>
                     <a href="23">{name} </a>
                 </p>

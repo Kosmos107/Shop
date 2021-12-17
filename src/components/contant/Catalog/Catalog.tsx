@@ -31,7 +31,7 @@ const Catalog:React.FC<Info> = ({text="23",}) => {
            </div>
            <div className={s.shop}>
             {mass.map((arr)=>{
-                return <Product name={arr.name} price={arr.price} size={arr.size} />
+                return <Product like={arr.like} name={arr.name} price={arr.price} size={arr.size} />
             })}
            </div>
         </div>
@@ -42,58 +42,71 @@ export default Catalog
 const mass = [{
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },{
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },{
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
     size:"errrrrrr"
+    ,
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 },
 {
     name:"одежда",
     price:"256",
-    size:"errrrrrr"
+    size:"errrrrrr",
+    like:true,
 }]

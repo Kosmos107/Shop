@@ -1,34 +1,32 @@
 import React from 'react'
 import s from "../Contant.module.scss"
-import { BsHeart,BsHeartFill } from "react-icons/bs";
-import i from "../../../img/170501.webp" 
+// import { BsHeart,BsHeartFill } from "react-icons/bs";
+import Product from "../components/Product"
+import Head from '../components/Head';
+import { useDispatch,useSelector } from 'react-redux';
+import { LikeTypedSelector } from '../../../Hooks/LikeTypedSelector';
 
 
 
-interface Info {
-    img?:any,
-    text?:string,
-    price?:string,
 
-}
-const Like:React.FC<Info> = ({img=i,text="нет текста",price="0"}) => {
+const Like:React.FC = () => {
+    const state = LikeTypedSelector(state => state.like.list)
+    const dispatch = useDispatch()
+    console.log(state)
+    console.log(dispatch)
+
+    
     return (
+         
         <div className={s.Like}>
-            <div className={s.Like__content}>
-                <div className={s.Like__photo}>
-                    <img src={img} alt="" />
-                </div>
-                <div className={s.Like__description}>
-                    <p>{text}</p>
-                    <p>{price}₽</p>
-                    <div className={s.Like__btns}>
-                        <button>В корзину</button>
-                        <span><BsHeart/></span>
-                    </div>
-                </div>
-            </div>
-            <div>
-
+            <Head name={"лайкнутый товар"}/>
+            <div className={s.Like__wrapper}>
+            {state.map((arr)=>{
+                   return <Product like={arr.like} name={arr.name} price={arr.price} size={arr.size} />
+                
+            })}
+  
+                    
             </div>
         </div>
     )

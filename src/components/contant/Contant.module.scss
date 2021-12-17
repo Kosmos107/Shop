@@ -25,8 +25,6 @@
     border: 1px solid steelblue;
     margin: 0 auto;
     overflow:hidden ;
-    
-    // scroll-behavior: smooth;
     &__line{
         width: 1300px;
         
@@ -177,18 +175,20 @@
     }
 }
 
-.Like{
+.CardProduct{
     padding: 50px 15px;
     &__content{
         display: flex;
         width: 80%;
-        
         margin: 0 auto;
+        padding: 0 20px;
         justify-content: center;
+        align-items: center;
         
     }
     
     &__photo{
+        
         flex: 0 0 40%;
         img{
             max-width: 100%;
@@ -196,8 +196,8 @@
     }
     &__description{
         flex: 0 0 30%;
-        margin:0 50px ;
-        padding: 60px 15px;
+        margin: 50px 0 50px ;
+        background-color: antiquewhite;
         
         p{
            text-align: center; 
@@ -232,4 +232,13 @@
         }
     }
 
+}
+
+.Like{
+    &__wrapper{
+        padding: 30px 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 }
