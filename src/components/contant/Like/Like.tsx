@@ -4,25 +4,29 @@ import s from "../Contant.module.scss"
 import Product from "../components/Product"
 import Head from '../components/Head';
 import { useDispatch,useSelector } from 'react-redux';
-import { LikeTypedSelector } from '../../../Hooks/LikeTypedSelector';
+import { TypedSelector } from '../../../Hooks/TypedSelector';
 
 
 
 
 const Like:React.FC = () => {
-    const state = LikeTypedSelector(state => state.like.list)
-    const dispatch = useDispatch()
+    const state = TypedSelector(state => state.product.list)
+    const filter = state.filter(arr=>arr.like===true)
     console.log(state)
-    console.log(dispatch)
-
-    
     return (
          
         <div className={s.Like}>
             <Head name={"лайкнутый товар"}/>
             <div className={s.Like__wrapper}>
-            {state.map((arr)=>{
-                   return <Product like={arr.like} name={arr.name} price={arr.price} size={arr.size} />
+            {filter.map((arr)=>{
+                   return <Product key={arr.id}
+                   name={arr.name}
+                   id={arr.id}
+                   like={arr.like}
+                   price={arr.price}
+                   />
+                        
+                   
                 
             })}
   

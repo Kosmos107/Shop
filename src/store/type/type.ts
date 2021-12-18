@@ -1,30 +1,24 @@
 
-export enum likeActionType {
-    AddNewProduct = "AddNewProduct"
+export enum prodActionType {
+    AddNewLike = "AddNewLike"
 }
-export enum prodActionType{
-    GetProduct = "GetProduct"
-}
+
 
 
 export interface prodState{
     list:any[],
-    like:any[]
+    
+    
 }
- export interface likeState {
-    list:any[],
-}
+
 
 export interface prodActions{
-    type:prodActionType.GetProduct,
-    payload:any
-}
-
-export interface likeActions {
-    type:likeActionType.AddNewProduct
+    type:prodActionType.AddNewLike,
     payload:any
 }
 
 
-export type prodAction =prodActions|prodActions
-export type Actions= likeActions
+
+
+export type Actions =prodActions|prodActions
+

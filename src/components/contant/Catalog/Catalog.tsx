@@ -3,6 +3,12 @@ import Filter from "../components/Filter"
 
 import Product from "../components/Product"
 import s from "../Contant.module.scss"
+import {TypedSelector} from '../../../Hooks/TypedSelector'
+
+
+
+
+
 interface Info {
     text?:string,
     filter?:string,
@@ -12,6 +18,8 @@ interface Info {
 
 
 const Catalog:React.FC<Info> = ({text="23",}) => {
+
+    const state= TypedSelector(state=>state.product.list)
     
     return (
         <div>
@@ -30,8 +38,13 @@ const Catalog:React.FC<Info> = ({text="23",}) => {
                </div>
            </div>
            <div className={s.shop}>
-            {mass.map((arr)=>{
-                return <Product like={arr.like} name={arr.name} price={arr.price} size={arr.size} />
+            {state.map((arr)=>{
+                return <Product 
+                id={arr.id}
+                like={arr.like}
+                 name={arr.name}
+                  price={arr.price}
+                   size={arr.size} />
             })}
            </div>
         </div>
@@ -39,74 +52,3 @@ const Catalog:React.FC<Info> = ({text="23",}) => {
 }
 
 export default Catalog
-const mass = [{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-    ,
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr",
-    like:true,
-}]

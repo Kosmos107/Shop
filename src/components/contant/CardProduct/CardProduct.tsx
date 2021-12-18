@@ -9,7 +9,7 @@ interface Info {
     img?:any,
     text?:string,
     price?:string,
-    like:boolean
+    
 
 }
 const CardProduct:React.FC<Info> = ({img=i,text="нет текста",price="0"}) => {

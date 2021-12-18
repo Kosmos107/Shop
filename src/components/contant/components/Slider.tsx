@@ -7,9 +7,9 @@ const Slider = () => {
         <div className={s.slider}>
             <div className={s.slider__line}>
                 <span className={s.slider__left}></span>
-                {mass.map((arr)=>{
-                    return <Product width={"350px"} name={arr.name} price={arr.price} size={arr.size} />
-                })}
+                {/* {mass.map((arr)=>{
+                    return <Product like={arr.like} width={"350px"} name={arr.name} price={arr.price} size={arr.size} />
+                })}  нехватает ид*/} 
                 <span className={s.slider__rigth}></span>
             </div>
         </div>
@@ -17,35 +17,3 @@ const Slider = () => {
 }
 
 export default Slider
-const mass = [{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-},{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-},{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-},{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-},
-{
-    name:"одежда",
-    price:"256",
-    size:"errrrrrr"
-}]
