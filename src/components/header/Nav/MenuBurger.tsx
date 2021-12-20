@@ -6,14 +6,21 @@ import s from "./Nav.module.scss"
 import classes from "classnames"
 import { FiSearch } from "react-icons/fi"
 import { AiOutlineHeart,AiOutlineUser } from "react-icons/ai";
+import { TypedSelector } from '../../../Hooks/TypedSelector';
 import {Link} from "react-router-dom"
 
+
+
+    
 interface propsMenu{
     addMenu:()=>void,
     adapt:boolean
 }
 
 const MenuBurger:React.FC<propsMenu> = ({addMenu,adapt}) => {
+    const state= TypedSelector(state=>state.product.list)
+    const filterLike = state.filter(arr=>arr.like===true)
+    let number =filterLike.length
     const [woman,setWoman] = useState<boolean>(false)
     const [man,setMan] = useState<boolean>(false)
     const adaptivClass = classes(s.Adaptiva,{[s.activeAdapt]:adapt})
@@ -30,9 +37,9 @@ const MenuBurger:React.FC<propsMenu> = ({addMenu,adapt}) => {
             </div>
             <div className={s.wrapperControls}>
                 <div className={s.Controls}>
-                    <Link to="/home"><AiOutlineUser/></Link>
-                    <Link to="/home" className={s.heart}><AiOutlineHeart/>
-                    <span>0</span>
+                    <Link  to="/home"><AiOutlineUser/></Link>
+                    <Link onClick={addMenu} to="/Like" className={s.heart}><AiOutlineHeart/>
+                    <span>{number}</span>
                     </Link>
                 </div>
                 <FiSearch style={{cursor:"pointer"}} className={s.search}/>

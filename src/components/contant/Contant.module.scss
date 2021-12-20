@@ -240,5 +240,52 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+       
+    }
+    &__empty{
+        font-size: 30px;
+    }
+}
+
+.Basket{
+    &__item>div{
+            // border: 1px solid springgreen;  
+    }
+    &__item{
+        width: 80%;
+        margin: 0 auto 30px;
+        border: 1px solid sienna;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        justify-content: space-between;
+        transition: all .8s ease;
+        
+    }
+    &__empty{
+        text-align: center;
+        padding: 40px 15px;
+        font-size: 30px;
+    }
+    &__photo{
+        height: 200px;
+        img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+    &__control{
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        width: 12%;
+        div{
+            user-select: none;
+            cursor: pointer;
+            font-size: 26px;
+            color: #2d2d2d;
+            padding: 5px;
+            
+        }
     }
 }

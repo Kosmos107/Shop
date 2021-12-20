@@ -3,7 +3,7 @@ import Menu from "./Menu/Menu"
 import Nav from "./Nav/Nav"
 import s from "./Header.module.scss"
 import MenuBurger from "./Nav/MenuBurger"
-import classes from "classnames"
+// import classes from "classnames"
 
 const Header = ()=>{
     const[adapt,setAdapt]= useState<boolean>(false)

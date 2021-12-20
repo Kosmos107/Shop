@@ -5,6 +5,7 @@ import Home from "./Home/Home"
 import Catalog from './Catalog/Catalog'
 import CardProduct from './CardProduct/CardProduct'
 import Like from "./Like/Like"
+import Basket from './Backet/Basket'
 
 const Contant = () => {
     return (
@@ -13,6 +14,7 @@ const Contant = () => {
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/Like' element={<Like/>}/>
+                <Route path='/Basket' element={<Basket/>}/>
                 <Route path='/Catalog' element={<Catalog/>}/>
                 <Route path='/CardProduct' element={<CardProduct/>}/>
             </Routes>
