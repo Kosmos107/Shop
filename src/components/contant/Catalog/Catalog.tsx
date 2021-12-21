@@ -1,6 +1,5 @@
 import React from 'react'
 import Filter from "../components/Filter"
-
 import Product from "../components/Product"
 import s from "../Contant.module.scss"
 import {TypedSelector} from '../../../Hooks/TypedSelector'
@@ -17,10 +16,19 @@ interface Info {
 
 
 
-const Catalog:React.FC<Info> = ({text="23",}) => {
+const Catalog:React.FC<Info> = ({text="23"}) => {
+    const filtr= (name:string)=>{
+        if(name === "woman"|| name ==="men"){
+           return state.filter((arr)=>arr.sex===name)
+        }else{
+            return state
+        }  
+    
+    }
 
     const state= TypedSelector(state=>state.product.list)
-    
+    const newState = filtr(text)
+    debugger
     return (
         <div>
            <div className={s.control__panel}>
@@ -38,8 +46,8 @@ const Catalog:React.FC<Info> = ({text="23",}) => {
                </div>
            </div>
            <div className={s.shop}>
-            {state.map((arr)=>{
-                return <Product 
+            {newState.map((arr)=>{
+                return <Product key={arr.id}
                 id={arr.id}
                 like={arr.like}
                  name={arr.name}

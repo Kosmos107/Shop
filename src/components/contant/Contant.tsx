@@ -16,6 +16,8 @@ const Contant = () => {
                 <Route path='/LikeList' element={<LikeList/>}/>
                 <Route path='/Basket' element={<Basket/>}/>
                 <Route path='/Catalog' element={<Catalog/>}/>
+                <Route path='/CatalogWoman' element={<Catalog text={"woman"}/>}/>
+                <Route path='/CatalogMen' element={<Catalog text={"men"}/>}/>
                 <Route path='/CardProduct' element={<CardProduct/>}/>
             </Routes>
             

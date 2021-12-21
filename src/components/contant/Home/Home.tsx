@@ -17,8 +17,8 @@ const Home = () => {
     return (
         <div className={s.WHome}>
             <Wall>
-                <Card width="49%"  img={Woman}/>
-                <Card width="49%" img={Man}/>
+                <Card width="49%" text="/CatalogWoman" img={Woman}/>
+                <Card width="49%" text="/CatalogMen" img={Man}/>
             </Wall>
             <Wall>
                 <Card width="23%"   img={old}/>

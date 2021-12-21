@@ -56,11 +56,11 @@ const initState:prodState ={
     },
     {
         id:7,
-        name:"Джинсы с завышенной талией Wideleg",
-        price:89,
+        name:"Хлопковые брюки в грузовом стиле",
+        price:890,
         size:"errrrrrr",
         like:false,
-        sex:"woman",
+        sex:"men",
         img:"https://static-sl.insales.ru/r/M-WrIiMJCF8/rs:fit:440:0:1/plain/images/products/1/7836/465034908/large_17091088_08.jpg@webp"
     },
     {

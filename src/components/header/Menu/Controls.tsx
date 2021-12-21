@@ -5,6 +5,7 @@ import  heart from "../Menu/img/heart.svg"
 import  shop from "../Menu/img/shop.svg"
 import {Link} from "react-router-dom"
 import { TypedSelector } from '../../../Hooks/TypedSelector'
+import {BasketLink,LikeListLink,CatalogLink} from "./type"
 
 
 
@@ -27,13 +28,18 @@ const Controls = () => {
 
     return (
         <ul className={s.Controls__wrapper}>
-            <li><Link to="/Catalog" ><img className={s.Controls__img} src={persona} alt="" /></Link></li>
-            <li><Link to="/LikeList"><img className={s.Controls__img} src={heart} alt="" />
+            <li key={CatalogLink}>
+                <Link to={CatalogLink} ><img className={s.Controls__img} src={persona} alt="" /></Link>
+            </li>
+            <li key={LikeListLink}>
+                <Link to={LikeListLink}><img className={s.Controls__img} src={heart} alt="" />
                 <div className={s.Controls__notice}>{number}</div>
-            </Link></li>
-            <li><Link to="/Basket"><img className={s.Controls__img} src={shop} alt="" />
-                <div className={s.Controls__notice}>{colProduct}</div>
-            </Link>
+                </Link>
+            </li>
+            <li key={BasketLink}>
+                <Link to={BasketLink}><img className={s.Controls__img} src={shop} alt="" />
+                    <div className={s.Controls__notice}>{colProduct}</div>
+                </Link>
                 <span className={s.Controls__money}>&nbsp;{valBasket}&nbsp;₽</span>
             </li>
         </ul>

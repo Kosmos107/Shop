@@ -1,7 +1,6 @@
 import React from 'react'
 import s from "../Contant.module.scss"
 import { Link } from "react-router-dom";
-import { BsHeart,BsHeartFill } from "react-icons/bs";
 import {useDispatch} from "react-redux"
 import {ActiveProduct} from "../../../store/actionCreate/actions"
 import Like from "../Like/Like"

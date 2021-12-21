@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import s from "../Contant.module.scss"
 import { BiAddToQueue} from 'react-icons/bi';
 import { FiDelete} from 'react-icons/fi';
@@ -18,8 +18,6 @@ interface Info {
 
 const BasketInner:React.FC<Info> = ({img=photo,price,name,count,id}) => {
      const dispatch = useDispatch()
-    const [opasity,setOpasity]= useState(0)
-    console.log(new Boolean(opasity))
     return (
         <div className={s.Basket__item} >
             <div className={s.Basket__photo}>
