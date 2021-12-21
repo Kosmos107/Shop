@@ -44,7 +44,8 @@ const Catalog:React.FC<Info> = ({text="23",}) => {
                 like={arr.like}
                  name={arr.name}
                   price={arr.price}
-                   size={arr.size} />
+                   size={arr.size} 
+                   img={arr.img}/>
             })}
            </div>
         </div>

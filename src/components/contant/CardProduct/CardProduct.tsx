@@ -1,18 +1,27 @@
-import React from 'react'
-import s from "../Contant.module.scss"
-import { BsHeart,BsHeartFill } from "react-icons/bs";
-import i from "../../../img/170501.webp" 
 
+import s from "../Contant.module.scss"
+import { useDispatch } from 'react-redux'; 
+import {TypedSelector} from  "../../../Hooks/TypedSelector"
+import {AddProductInBasket } from "../../../store/actionCreate/actions"
+import Like from "../Like/Like"
 
 
 interface Info {
     img?:any,
-    text?:string,
+    names?:string,
     price?:string,
     
 
 }
-const CardProduct:React.FC<Info> = ({img=i,text="нет текста",price="0"}) => {
+const CardProduct:React.FC<Info> = () => {
+
+    const ActiveProduct = TypedSelector(state=>state.active.id)
+    const infoState =TypedSelector(state=>state.product.list)
+    const Index = infoState.findIndex((el)=>el.id===ActiveProduct)
+    const {img,id,price,name,like}= infoState[Index]
+    const dispatch = useDispatch()
+
+    
     return (
         <div className={s.CardProduct}>
             <div className={s.CardProduct__content}>
@@ -20,11 +29,11 @@ const CardProduct:React.FC<Info> = ({img=i,text="нет текста",price="0"}
                     <img src={img} alt="" />
                 </div>
                 <div className={s.CardProduct__description}>
-                    <p>{text}</p>
+                    <p>{name}</p>
                     <p>{price}₽</p>
                     <div className={s.CardProduct__btns}>
-                        <button>В корзину</button>
-                        <span><BsHeart/></span>
+                        <button  onClick={()=>dispatch(AddProductInBasket({id,price,img,name}))}>В корзину</button>
+                        <Like id={id} like={like}/>
                     </div>
                 </div>
             </div>

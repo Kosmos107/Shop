@@ -8,7 +8,7 @@ const Block = () => {
         <ul >
            {arr.map((arr)=>{
                return (
-                   <li><Link to="123">{arr}</Link></li>
+                   <li><Link to="/Catalog">{arr}</Link></li>
                )
            })} 
         </ul>

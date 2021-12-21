@@ -98,7 +98,7 @@
         }
     }
 
-    &__like{
+    span{
         display: flex;
         position: absolute;
         top: 2%;
@@ -115,12 +115,13 @@
         visibility: hidden;
         cursor: pointer;
      }
+     span:hover{
+        color: black;
+    }
 }
-.product__like:hover{
-    color: black;
-}
+
 .product:hover{
-    .product__like{
+    span{
         transform: translateX(0);
         opacity: 1;
         visibility: visible;
@@ -128,7 +129,7 @@
 }
 .shop{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 90%;
     margin: 0 auto;
@@ -197,7 +198,6 @@
     &__description{
         flex: 0 0 30%;
         margin: 50px 0 50px ;
-        background-color: antiquewhite;
         
         p{
            text-align: center; 
@@ -209,6 +209,7 @@
         }
     }
     &__btns{
+        user-select: none;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -221,6 +222,13 @@
             color: white;
             border: none;
             font-weight: lighter;
+            transition: all .4s ease;
+
+        }
+        button:active{
+            background-color: #f7f7f7;
+            color: #525665;
+            transform: scale(0.6)
         }
         span{
             cursor: pointer;
@@ -248,9 +256,7 @@
 }
 
 .Basket{
-    &__item>div{
-            // border: 1px solid springgreen;  
-    }
+
     &__item{
         width: 80%;
         margin: 0 auto 30px;

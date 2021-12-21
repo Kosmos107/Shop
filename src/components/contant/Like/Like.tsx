@@ -1,37 +1,32 @@
-import React from 'react'
-import s from "../Contant.module.scss"
-// import { BsHeart,BsHeartFill } from "react-icons/bs";
-import Product from "../components/Product"
-import Head from '../components/Head';
-import { TypedSelector } from '../../../Hooks/TypedSelector';
+import React,{useEffect,useState} from 'react'
 
-import { GiCat } from "react-icons/gi";
+import { BsHeart,BsHeartFill } from "react-icons/bs";
+import {useDispatch} from "react-redux"
+import {AddLike} from "../../../store/actionCreate/actions"
 
 
 
+interface info {
+    id:any,
+    like:boolean,
+}
+const Like:React.FC<info> = ({like,id}) => {
 
-const Like:React.FC = () => {
-    const state = TypedSelector(state => state.product.list)
-    const filter = state.filter(arr=>arr.like===true)
-    console.log(state)
-    console.log(filter)
+    const dispatch =useDispatch()
+    const [newLike,setNewLike]= useState(like)
+    
+    const changeLike =():void=>{
+        setNewLike((newLike:boolean)=>!newLike)
+        console.log(newLike)
+    }
+
+   useEffect(()=>{
+    console.log("сработал юзэффект")
+    dispatch(AddLike(id,newLike))
+   },[newLike,id,dispatch])
     return (
-         
-        <div className={s.Like}>
-            <Head name={"лайкнутый товар"}/>
-            <div className={s.Like__wrapper}>
-            {(filter.length!==0)?filter.map((arr)=>{
-                   return <Product key={arr.id}
-                   name={arr.name}
-                   id={arr.id}
-                   like={arr.like}
-                   price={arr.price}
-                   />
-            }):<div className={s.Like__empty}>ничего не нравится<GiCat  style={{marginLeft:"20px"}}/></div>}
-  
-                    
-            </div>
-        </div>
+        
+        <span onClick={changeLike} >{newLike?<BsHeartFill/>:<BsHeart/>}</span>
     )
 }
 

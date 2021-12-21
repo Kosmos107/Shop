@@ -9,7 +9,7 @@ interface User {
 const List = (props:User) => {
     return (
         <div className={s.link}>
-            <Link to="/home">{props.name}<span className={s.arrow}>{">"}</span></Link>
+            <Link to="/Catalog">{props.name}<span className={s.arrow}>{">"}</span></Link>
             
             <WBlock/>
         </div>

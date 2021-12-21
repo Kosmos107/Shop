@@ -1,5 +1,5 @@
 
-import {prodActionType,basketActionType} from "../type/type" 
+import {prodActionType,basketActionType,stateActionType} from "../type/type" 
 
 export const AddLike = (id:any,val:boolean)=>{
     return{
@@ -16,7 +16,8 @@ interface info {
     name?:string,
     price?:number,
     img?:string,
-    oldPrice?:number
+    oldPrice?:number,
+    like?:boolean
 }
 
 export const AddProductInBasket = (state:info)=>{
@@ -36,5 +37,12 @@ export const AllDeleteProductInBasket = (state:info)=>{
     return{
         type:basketActionType.AllDeleteOneProduct,
         payload:state
+    }
+}
+export const ActiveProduct = (state:info)=>{
+
+    return{
+        type:stateActionType.activeProduct,
+        payload:state,
     }
 }

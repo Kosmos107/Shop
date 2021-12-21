@@ -3,31 +3,7 @@
 import {basketActionType,basketState,ActionsBasket} from "../type/type"
 
 const initState:basketState ={
-    list:[{
-        id:1,
-        name:"одежда",
-        price:256,
-        oldPrice:256,
-        size:"errrrrrr",
-        img:"https://static-sl.insales.ru/r/fiDjdi_6FnQ/rs:fit:1000:0:1/plain/images/products/1/4006/465006502/17024061_43.jpg@webp",
-        count:1,
-    },{
-        id:2,
-        name:"одежда",
-        price:256,
-        oldPrice:256,
-        size:"errrrrrr",
-        img:"https://static-sl.insales.ru/r/fiDjdi_6FnQ/rs:fit:1000:0:1/plain/images/products/1/4006/465006502/17024061_43.jpg@webp",
-        count:1,
-    },{
-        id:3,
-        name:"одежда",
-        price:256,
-        oldPrice:256,
-        size:"errrrrrr",
-        img:"https://static-sl.insales.ru/r/fiDjdi_6FnQ/rs:fit:1000:0:1/plain/images/products/1/4006/465006502/17024061_43.jpg@webp",
-        count:1,
-    },]
+    list:[]
 }
 
 interface info {
@@ -48,11 +24,11 @@ const addNewItem=(item:info,action:any)=>{
 
     }else{
         return{
-            id:action.payload.id,
-            name:action.payload.name,
-            price:action.payload.price,
-            oldPrice:action.payload.price,
-            img:action.payload.img,
+            id:action.id,
+            name:action.name,
+            price:action.price,
+            oldPrice:action.price,
+            img:action.img,
             count:1,
         }
     }
@@ -76,7 +52,6 @@ const changeList = (state:any,action:any,funct:any)=>{
             const Index = state.list.findIndex((arr:any)=>arr.id===itemID)
             const item = state.list[Index]
             let newObj =funct(item,action.payload)
-            debugger
             if(Index>-1){
                 if(newObj.count>0){
                     return{
@@ -110,7 +85,6 @@ const changeList = (state:any,action:any,funct:any)=>{
 
 
 export const basketReducer = (state=initState,action:ActionsBasket):basketState=>{
-    
 
     switch(action.type){  
         case basketActionType.AddNewProduct:
