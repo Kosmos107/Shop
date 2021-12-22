@@ -14,6 +14,7 @@ import Wall from "../components/Wall"
 
 
 const Home = () => {
+    
     return (
         <div className={s.WHome}>
             <Wall>

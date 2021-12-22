@@ -28,17 +28,22 @@ const MenuBurger:React.FC<propsMenu> = ({addMenu,adapt}) => {
         a((p:boolean)=>!p)
         console.log(b)
     }
+    const deleg = (e:any)=>{
+        if(e.target.closest('a')){
+            addMenu()   
+        }
+    }
     return (
-        <div className={adaptivClass}>
+        <div onClick={deleg} className={adaptivClass}>
             <div className={s.wrapperOff}>
                 <div className={s.innerOff} onClick={addMenu}>
                     <FiX style={{fontSize:"27px",color:"white"}}/>
                 </div>
             </div>
             <div className={s.wrapperControls}>
-                <div className={s.Controls}>
+                <div  className={s.Controls}>
                     <Link  to="/home"><AiOutlineUser/></Link>
-                    <Link onClick={addMenu} to="/Like" className={s.heart}><AiOutlineHeart/>
+                    <Link  to="/Like" className={s.heart}><AiOutlineHeart/>
                     <span>{number}</span>
                     </Link>
                 </div>
@@ -50,7 +55,7 @@ const MenuBurger:React.FC<propsMenu> = ({addMenu,adapt}) => {
                 </div>
                 <div className={s.AInner}>
                         <div  className={s.listContent}>
-                        <Link to="Ж">Женщины</Link>
+                        <Link to="/CatalogWoman">Женщины</Link>
                             {woman?<BsChevronUp onClick={():void=>f(setWoman,woman)} style={{cursor:"pointer",fontSize:"20px"}}/> 
                              :<BsChevronDown onClick={():void=>f(setWoman,woman)} style={{cursor:"pointer",fontSize:"20px"}} />} 
                         </div>
@@ -59,7 +64,7 @@ const MenuBurger:React.FC<propsMenu> = ({addMenu,adapt}) => {
                 </div>
                 <div className={s.AInner}>
                         <div  className={s.listContent}>
-                        <Link to="М">Мужчины</Link>
+                        <Link to="/CatalogMan">Мужчины</Link>
                              {man?<BsChevronUp onClick={():void=>f(setMan,man)} style={{cursor:"pointer",fontSize:"20px"}}/> 
                              :<BsChevronDown onClick={():void=>f(setMan,man)} style={{cursor:"pointer",fontSize:"20px"}} />}
                              

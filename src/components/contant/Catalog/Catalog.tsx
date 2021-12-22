@@ -5,30 +5,30 @@ import s from "../Contant.module.scss"
 import {TypedSelector} from '../../../Hooks/TypedSelector'
 
 
-
+type Search = string | undefined
 
 
 interface Info {
     text?:string,
-    filter?:string,
+    sex?:Search,
+    filter?:Search,
+    val?:Search,
     children?:React.ReactChild|React.ReactNode
 }
 
 
 
-const Catalog:React.FC<Info> = ({text="23"}) => {
-    const filtr= (name:string)=>{
-        if(name === "woman"|| name ==="men"){
-           return state.filter((arr)=>arr.sex===name)
-        }else{
-            return state
-        }  
-    
-    }
+const Catalog:React.FC<Info> = ({text="Название Категорий",val=" ",filter="default"}) => {
 
+    const ObjFilter:any = {
+        sex:()=>state.filter((arr)=>arr.sex===val),
+        search:()=>state.filter(arr=>arr.name.toLowerCase().includes(val.toLowerCase())),
+        default:()=>state
+    }
+    
+    
     const state= TypedSelector(state=>state.product.list)
-    const newState = filtr(text)
-    debugger
+    const newState = ObjFilter[filter]()
     return (
         <div>
            <div className={s.control__panel}>
@@ -46,7 +46,8 @@ const Catalog:React.FC<Info> = ({text="23"}) => {
                </div>
            </div>
            <div className={s.shop}>
-            {newState.map((arr)=>{
+            {
+            newState.length ?newState.map((arr:any)=>{
                 return <Product key={arr.id}
                 id={arr.id}
                 like={arr.like}
@@ -54,7 +55,7 @@ const Catalog:React.FC<Info> = ({text="23"}) => {
                   price={arr.price}
                    size={arr.size} 
                    img={arr.img}/>
-            })}
+            }) : <div style={{margin:"0 auto",fontSize:"25px"}} > ничего не найдено, эх жалко</div> }
            </div>
         </div>
     )

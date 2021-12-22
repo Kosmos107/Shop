@@ -11,6 +11,9 @@ export enum basketActionType{
 export enum stateActionType{
     activeProduct = "stateActionType"
 }
+export enum searchActionType{
+    searchProduct = "searchProduct"
+}
 
 export interface basketState{
     list:any[]
@@ -28,6 +31,10 @@ export interface ActionsActive{
     name:any,
     img:any,
     like:any,
+}
+
+export interface SearchActive{
+    name:string
 }
 
 export interface activeProduct{
@@ -50,6 +57,10 @@ export interface basketActionsAllDelet{
 export interface prodActions{
     type:prodActionType.AddNewLike,
     payload:any
+}
+export interface SearcType{
+    type:searchActionType.searchProduct
+    payload:string
 }
 
 

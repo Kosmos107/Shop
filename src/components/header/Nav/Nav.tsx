@@ -5,8 +5,8 @@ import s from "./Nav.module.scss"
 const Nav = () => {
     return (
         <div className={s.wrapper}>
-            <List name={"Женщины"}/>
-            <List name={"Мужчины"}/>
+            <List link={"/CatalogWoman"} name={"Женщины"}/>
+            <List link={"/CatalogMen"} name={"Мужчины"}/>
             
         </div>
     )

@@ -6,8 +6,11 @@ import Catalog from './Catalog/Catalog'
 import CardProduct from './CardProduct/CardProduct'
 import LikeList from "./Like/LikeList"
 import Basket from './Backet/Basket'
+import { TypedSelector } from '../../Hooks/TypedSelector'
 
 const Contant = () => {
+
+    const search = TypedSelector(state=>state.search.name)
     return (
         <div  className={s.WrapperContant}>
             
@@ -16,8 +19,9 @@ const Contant = () => {
                 <Route path='/LikeList' element={<LikeList/>}/>
                 <Route path='/Basket' element={<Basket/>}/>
                 <Route path='/Catalog' element={<Catalog/>}/>
-                <Route path='/CatalogWoman' element={<Catalog text={"woman"}/>}/>
-                <Route path='/CatalogMen' element={<Catalog text={"men"}/>}/>
+                <Route path='/CatalogWoman' element={<Catalog text="Женщины" val="woman"filter="sex"/>}/>
+                <Route path='/CatalogMen' element={<Catalog text="Мужчины" val="men"filter="sex"/>}/>
+                <Route path='/CatalogSearch' element={<Catalog text="Поиск" filter="search" val={search}/>}/>
                 <Route path='/CardProduct' element={<CardProduct/>}/>
             </Routes>
             

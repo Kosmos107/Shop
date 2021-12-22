@@ -1,5 +1,5 @@
 
-import {prodActionType,basketActionType,stateActionType} from "../type/type" 
+import {prodActionType,basketActionType,stateActionType,searchActionType} from "../type/type" 
 
 export const AddLike = (id:any,val:boolean)=>{
     return{
@@ -7,6 +7,14 @@ export const AddLike = (id:any,val:boolean)=>{
         payload:{
             id:id,
             value:val
+        }
+    }
+}
+export const AddSearch = (name:string)=>{
+    return{
+        type:searchActionType.searchProduct,
+        payload:{
+            name:name
         }
     }
 }
