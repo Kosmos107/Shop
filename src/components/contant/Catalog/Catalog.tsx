@@ -19,12 +19,12 @@ interface Info {
 
 
 const Catalog:React.FC<Info> = ({text="Название Категорий",val=" ",filter="default"}) => {
-    const List = [{id:15,money:67,name:"dog",color:"red"},
-        {id:100,money:15,name:"dog",color:"red"},
-        {id:3,money:25,zara:"c",age:"15"},
-        {id:31,money:30,age:"15"},
+    const List = [{money:67,age:23},
+        {money:15},
+        {money:25,},
+        {money:30,},
     ]
-    const [newSortList,setNewSortList] = useState(List)
+    const [SortList,setSortList] = useState(List)
 
     const ObjFilter:any = {
         sex:()=>state.filter((arr)=>arr.sex===val),
@@ -48,15 +48,17 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
         }
         let examin = arr.find((list:any)=>list[val])
         if(examin){
+            let newArr = [...arr]
             if(objSorting[name]){
                 console.log("массив отсортирован")
                 let newFunct = objSorting[name](val)
-                let result = arr.sort(newFunct)
-                console.log(result)
-                setNewSortList([...result])
+                let result = newArr.sort(newFunct)
+                console.log("новый массив>",result)
+                console.log("старый масив)",SortList)
+                 setSortList(result)
             }else{
                 console.log("вернулось перове состояние")
-                setNewSortList([...List])
+                 setSortList(arr)
             }
  
         }else{
@@ -64,7 +66,7 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
         }
     }
 
-        
+        console.log("изначальный массив>",SortList)
 
     return (
         <div>
@@ -84,7 +86,7 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
            </div>
            <div className={s.shop} >
           {
-              newSortList.map((arr)=>{
+              SortList.map((arr)=>{
                 return (
                     <div style={{border:"1px solid red",fontSize:"25px",margin:"15px"}}>{arr.money}</div>
                 )
