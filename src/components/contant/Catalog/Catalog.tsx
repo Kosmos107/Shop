@@ -3,7 +3,7 @@ import Filter from "../components/Filter"
 import Product from "../components/Product"
 import s from "../Contant.module.scss"
 import {TypedSelector} from '../../../Hooks/TypedSelector'
-
+import {sorting} from "../../../function/function"
 
 type Search = string | undefined
 
@@ -37,36 +37,6 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
     const newState = ObjFilter[filter]()
 
    
-    const Sorting = (arr:any,val:string,name:string):void=>{
-        const objSorting:any= {
-            sortIncrease:(val:any)=>(a:any,b:any):any=>{
-                return a[val] - b[val]
-            },
-            sortDecrement:(val:any)=>(a:any,b:any):any=>{
-                return b[val] - a[val]
-            },
-        }
-        let examin = arr.find((list:any)=>list[val])
-        if(examin){
-            let newArr = [...arr]
-            if(objSorting[name]){
-                console.log("массив отсортирован")
-                let newFunct = objSorting[name](val)
-                let result = newArr.sort(newFunct)
-                console.log("новый массив>",result)
-                console.log("старый масив)",SortList)
-                 setSortList(result)
-            }else{
-                console.log("вернулось перове состояние")
-                 setSortList(arr)
-            }
- 
-        }else{
-            console.log("массив не изменился")
-        }
-    }
-
-        console.log("изначальный массив>",SortList)
 
     return (
         <div>
@@ -74,7 +44,7 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
                <div  className={s.control__text}>{text}</div>
                <div className={s.control__filter}>
                    <Filter/>
-                    <select onClick={(e:any)=>{Sorting(List,"money",e.target.value)}}  className={s.sorting}>
+                    <select onClick={(e:any)=>{sorting(List,"money",e.target.value,setSortList)}}  className={s.sorting}>
                         <option value="0">без сортировки</option>
                         <option value="sortIncrease">по возрастанию</option>
                         <option value="sortDecrement">по убыванию</option>
