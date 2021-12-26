@@ -16,14 +16,13 @@ const Like:React.FC<info> = ({like,id}) => {
     const [newLike,setNewLike]= useState(like)
     
     const changeLike =():void=>{
-        setNewLike((newLike:boolean)=>!newLike)
-        console.log(newLike)
+        setNewLike(newLike=>!newLike)
     }
 
    useEffect(()=>{
-    console.log("сработал юзэффект")
-    dispatch(AddLike(id,newLike))
-   },[newLike,id,dispatch])
+    console.log("сработал юзэффект",newLike)
+     dispatch(AddLike(id,newLike))
+   },[newLike,dispatch,id])
     return (
         
         <span onClick={changeLike} >{newLike?<BsHeartFill/>:<BsHeart/>}</span>

@@ -1,7 +1,7 @@
 import {searchActionType,SearchActive} from "../type/type"
 
 const initState:any ={
-        
+     name:""
    }
 
 
