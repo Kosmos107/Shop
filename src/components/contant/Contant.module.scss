@@ -139,6 +139,9 @@
    
 }
 .control{
+    // &__wrapper{
+    //     position: relative;
+    // }
     &__panel{
         
         width: 90%;
@@ -149,7 +152,7 @@
         font-size: 24px;
         font-weight: bold;
     }
-    &__filter{
+    &__sortPanel{
         margin: 30px 0;
         display: flex;
         justify-content: space-between;
@@ -157,10 +160,9 @@
             flex-direction: column;
         }
     }
-    
-}
-.filter{
-    cursor: pointer;
+
+    &__btn{
+        cursor: pointer;
     font-size: 16px;
     font-weight: lighter;
     padding: 10px 20px ;
@@ -172,6 +174,75 @@
     text-align: center;
     @media screen and (max-width:350px) {
         justify-content: center;
+    }
+    }
+}
+    
+
+.Filter{
+    
+    
+    &__wrapper{
+        box-sizing: border-box;
+        color: #525665;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 370px;
+        z-index: 40;
+        background-color: white;
+        padding: 0 25px;
+        transition: all .3s ease;
+        transform: translateX(-370px);
+    }
+
+    &__active{
+        transform: translateX(0);
+    }
+    &__container{
+        padding-top: 20px;
+        overflow-y: auto;
+        height: 100%;
+        
+    }
+    &__panel{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 15px;
+        border: 1px solid slateblue;
+        align-items: center;
+        color: #525665;
+        margin-bottom: 5px;
+        span{
+            font-size: 19px;
+            font-weight: bold;
+        }
+    }
+    &__item{
+        padding: 5px 15px;
+        border: 1px solid slateblue;
+        margin-bottom: 5px;
+    }
+    &__Btns{
+        box-sizing: border-box;
+        background-color: white;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 5px 25px ;
+        width: 100%;
+        button{
+            box-sizing: border-box;
+            width: 90%;
+            margin: 0 auto 10px;
+            display: block;
+            height: 40px;
+            border: none;
+            color: white;
+            background-color: #525665;
+            font-size: 20px;
+        }
     }
 }
 
@@ -296,4 +367,7 @@
             transform: scale(0.7);
         }
     }
+}
+.off{
+    display: none;
 }
