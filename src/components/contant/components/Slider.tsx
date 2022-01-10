@@ -1,19 +1,25 @@
-import React,{useState,useRef,useEffect} from 'react'
+import React,{useState,useRef} from 'react'
 import s from "../Contant.module.scss"
 import Product from "./Product"
 import cn from "classnames"
 import { AiOutlineArrowLeft,AiOutlineArrowRight} from "react-icons/ai";
 import { TypedSelector } from '../../../Hooks/TypedSelector'
+import {filterState} from "../../../function/function"
 
+
+type Arg = string|undefined|null
 interface slider {
     children?:React.ReactChild|React.ReactNode
+    name?:Arg 
+    search?:Arg 
 }
 
-const Slider:React.FC<slider> = ({children}) => {
-    const state = TypedSelector(state=>state.product.list)
-    useEffect(()=>{
-        console.log("change")
-    },[])
+const Slider:React.FC<slider> = ({children,name,search}) => {
+     const state = TypedSelector(state=>state.product.list)
+     debugger
+     const newState =filterState(state,name,search)
+
+   
     
 
     const sliderRef = useRef<HTMLDivElement>(null)
@@ -49,7 +55,7 @@ const Slider:React.FC<slider> = ({children}) => {
             <button onClick={prevHandler} className={arrowLeftCl}><AiOutlineArrowLeft/></button>
             <button onClick={nextHandler} className={arrowRigthCl}><AiOutlineArrowRight/></button>
             <div className={s.slider__line} ref={sliderRef}>
-                {state.slice(0,6).map((el)=>{
+                {newState.slice(0,6).map((el)=>{
                     return( <Product id={el.id} price={el.price} name={el.name}  width={"300px"} img={el.img} />)
                 })}
             </div>

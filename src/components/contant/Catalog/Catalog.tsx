@@ -5,6 +5,7 @@ import s from "../Contant.module.scss"
 import {TypedSelector} from '../../../Hooks/TypedSelector'
 import {sorting} from "../../../function/function"
 import { FiFilter } from "react-icons/fi";
+import {Filtration} from "../../../function/function"
 
 type Search = string | undefined
 
@@ -21,30 +22,38 @@ interface Info {
 
 const Catalog:React.FC<Info> = ({text="Название Категорий",val=" ",filter="default"}) => {
     const [activeFilter,setActiveFilter] = useState(false)
+    const [localFilter,setLocalFilter] = useState(null)
     
     const changeAcive = ()=>{
         setActiveFilter(active=>!active)
     }
-  
-
-    const ObjFilter:any = {
-        sex:(state:any[])=>state.filter((arr)=>arr.sex===val),
-        search:(state:any[])=>state.filter(arr=>arr.name.toLowerCase().includes(val.toLowerCase())),
-        default:(state:any[])=>state
-    }
-    
-    
     const state= TypedSelector(state=>state.product.list)
     
     const [SortList,setSortList] = useState(state)
 
-    const newState = ObjFilter[filter](SortList)
+    const stateFilter = Filtration(SortList,filter,val)
+    
+    const newLocalFilter=(e:any)=>{
+        console.log("произошла фильрация")
+        console.log(e)
+    }
+    
    
-
+    const contant=stateFilter.length ?(localFilter ||stateFilter).map((arr:any)=>{
+        return <Product key={arr.id}
+        id={arr.id}
+        like={arr.like}
+         name={arr.name}
+          price={arr.price}
+           size={arr.size} 
+           img={arr.img}/>
+    }) : <div style={{margin:"0 auto",fontSize:"25px"}} > ничего не найдено, эх жалко</div> 
+   
     return (
         <div className={s.control__wrapper}>
-            <Filter active={activeFilter} change={changeAcive}/>
+            <Filter localFilter={newLocalFilter} active={activeFilter} change={changeAcive}/>
            <div  className={s.control__panel}>
+               
                <div  className={s.control__text}>{text}</div>
                <div className={s.control__sortPanel}>
                     <button onClick={changeAcive} className={s.control__btn}>Фильтр<FiFilter style={{marginLeft:"8px"}} /></button>
@@ -58,16 +67,7 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
            </div>
            <div className={s.shop} >
        
-            {
-            newState.length ?newState.map((arr:any)=>{
-                return <Product key={arr.id}
-                id={arr.id}
-                like={arr.like}
-                 name={arr.name}
-                  price={arr.price}
-                   size={arr.size} 
-                   img={arr.img}/>
-            }) : <div style={{margin:"0 auto",fontSize:"25px"}} > ничего не найдено, эх жалко</div> }
+            {contant }
            </div>
         </div>
     )

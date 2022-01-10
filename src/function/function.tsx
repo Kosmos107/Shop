@@ -31,3 +31,25 @@
             console.log("массив не изменился")
         }
     }
+
+
+    type ifParams = string|null|undefined
+    export  const filterState=(state:any[],name:ifParams=null,search:ifParams):any[]=>{
+        if(name && search){
+            return state.filter((arr)=>arr[name]===search)
+        }
+        return state
+    }
+
+    export const Filtration= (state:any,filter:string="default",val:any)=>{
+        const z =val
+
+        const ObjFilter:any = {
+            sex:(state:any[])=>state.filter((arr)=>arr.sex===val),
+            search:(state:any[])=>state.filter(arr=>arr.name.toLowerCase().includes(val.toLowerCase())),
+            price:(state:any[])=>state.filter(arr=>arr.price<=val),
+            default:(state:any[])=>state
+            
+        }
+        return ObjFilter[filter](state)
+    }

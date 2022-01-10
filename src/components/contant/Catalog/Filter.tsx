@@ -7,10 +7,11 @@ import FilterInner from "./FilterInner"
 
 interface Filt{
     active:boolean,
-    change:()=>void
+    change:()=>void,
+    localFilter?:(e:any)=>any
 }
 
-const Filter:React.FC<Filt> = ({active,change}) => {
+const Filter:React.FC<Filt> = ({active,change,localFilter}) => {
 
     // const [act,setAct] = useState(false)
     // const ss = cl({[s.off]:act})
@@ -18,7 +19,7 @@ const Filter:React.FC<Filt> = ({active,change}) => {
     
     const name = cl(s.Filter__wrapper,{[s.Filter__active]:active})
     return (
-        <div className={name} >
+        <div className={name} onClick={localFilter} >
             <div className={s.Filter__container}>
                 <div className={s.Filter__panel}>
                     <span>Фильтры</span>
@@ -47,7 +48,7 @@ const Filter:React.FC<Filt> = ({active,change}) => {
                     </FilterInner>
             </div>
             <div className={s.Filter__Btns}>
-                <button>Применить</button>
+                <button >Применить</button>
             </div>
             
         </div>

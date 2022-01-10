@@ -28,9 +28,9 @@ const Home = () => {
                 <Card width="23%"  img={Sred}/>
             </Wall>
             <Head name="Мужское" />  
-           <Slider/>
+           <Slider name="sex" search="men" />
            <Head name="Женское" />  
-           <Slider/>
+           <Slider name="sex" search="woman"/>
             <Head name="Привет" />  
             <div className={s.brand}>
                 <img src="https://static-sl.insales.ru/r/NvWRh_bV59o/rs:fit:500:0:1/plain/files/1/4362/14930186/original/Component-8.png@webp" alt="" />
