@@ -1,4 +1,4 @@
-import React,{useState}from 'react'
+import React,{useState,useRef}from 'react'
 import Filter from "./Filter"
 import Product from "../components/Product"
 import s from "../Contant.module.scss"
@@ -6,10 +6,15 @@ import {TypedSelector} from '../../../Hooks/TypedSelector'
 import {sorting} from "../../../function/function"
 import { FiFilter } from "react-icons/fi";
 import {Filtration} from "../../../function/function"
+import {resultMassFilter} from "../../../function/function"
 
 type Search = string | undefined
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//добавить функции в локалфилтр из сандбокса
 interface Info {
     text?:string,
     sex?:Search,
@@ -23,6 +28,7 @@ interface Info {
 const Catalog:React.FC<Info> = ({text="Название Категорий",val=" ",filter="default"}) => {
     const [activeFilter,setActiveFilter] = useState(false)
     const [localFilter,setLocalFilter] = useState(null)
+    const refForm = useRef(null) 
     
     const changeAcive = ()=>{
         setActiveFilter(active=>!active)
@@ -34,9 +40,16 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
     const stateFilter = Filtration(SortList,filter,val)
     
     const newLocalFilter=(e:any)=>{
+        e.preventDefault()
+        // debugger
+        resultMassFilter(stateFilter,refForm.current,setLocalFilter)
         console.log("произошла фильрация")
-        console.log(e)
+        
     }
+    const nonLocalFilter = ()=>{
+        setLocalFilter(null)
+    }
+    
     
    
     const contant=stateFilter.length ?(localFilter ||stateFilter).map((arr:any)=>{
@@ -51,12 +64,14 @@ const Catalog:React.FC<Info> = ({text="Название Категорий",val=
    
     return (
         <div className={s.control__wrapper}>
-            <Filter localFilter={newLocalFilter} active={activeFilter} change={changeAcive}/>
+            <Filter refForm={refForm} localFilter={newLocalFilter} active={activeFilter} change={changeAcive}/>
            <div  className={s.control__panel}>
                
                <div  className={s.control__text}>{text}</div>
+               
                <div className={s.control__sortPanel}>
                     <button onClick={changeAcive} className={s.control__btn}>Фильтр<FiFilter style={{marginLeft:"8px"}} /></button>
+                    {localFilter?<div onClick={nonLocalFilter} className={s.control__visfilter}>фильтр<span>x</span></div> :null}
                     <select onClick={(e:any)=>{sorting(state,"price",e.target.value,setSortList)}}  className={s.sorting}>
                         <option value="0">без сортировки</option>
                         <option value="sortIncrease">цена по возрастанию</option>

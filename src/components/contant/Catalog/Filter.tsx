@@ -8,10 +8,11 @@ import FilterInner from "./FilterInner"
 interface Filt{
     active:boolean,
     change:()=>void,
-    localFilter?:(e:any)=>any
+    localFilter?:(e:any)=>void,
+    refForm:any
 }
 
-const Filter:React.FC<Filt> = ({active,change,localFilter}) => {
+const Filter:React.FC<Filt> = ({active,change,localFilter,refForm}) => {
 
     // const [act,setAct] = useState(false)
     // const ss = cl({[s.off]:act})
@@ -19,27 +20,21 @@ const Filter:React.FC<Filt> = ({active,change,localFilter}) => {
     
     const name = cl(s.Filter__wrapper,{[s.Filter__active]:active})
     return (
-        <div className={name} onClick={localFilter} >
+        <form ref={refForm} className={name}  >
             <div className={s.Filter__container}>
                 <div className={s.Filter__panel}>
                     <span>Фильтры</span>
                     <BiX style={{fontSize:"30px",cursor:"pointer"}} onClick={change } />
                 </div>
                     <FilterInner name="Цена" >
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
+                        <label htmlFor="price">price</label>
+                        <input type="text" id="price" />
                     </FilterInner>
-                    <FilterInner name="Цена" >
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
+                    <FilterInner name="Название" >
+                        <label htmlFor="search">search</label>
+                        <input type="text" id="search" />
                     </FilterInner>
-                    <FilterInner name="Цена" >
+                    <FilterInner name="Цвет" >
                         <ul>
                             <li>1</li>
                             <li>2</li>
@@ -48,10 +43,10 @@ const Filter:React.FC<Filt> = ({active,change,localFilter}) => {
                     </FilterInner>
             </div>
             <div className={s.Filter__Btns}>
-                <button >Применить</button>
+                <button onClick={localFilter}>Применить</button>
             </div>
             
-        </div>
+        </form>
     )
 }
 

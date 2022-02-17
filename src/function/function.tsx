@@ -1,4 +1,5 @@
 
+
     export const sorting = (arr:any[],val:string,name:string,setHooks?:any):void=>{
         const objSorting:any= {
             sortIncrease:(val:any)=>(a:any,b:any):any=>{
@@ -42,7 +43,6 @@
     }
 
     export const Filtration= (state:any,filter:string="default",val:any)=>{
-        const z =val
 
         const ObjFilter:any = {
             sex:(state:any[])=>state.filter((arr)=>arr.sex===val),
@@ -53,3 +53,53 @@
         }
         return ObjFilter[filter](state)
     }
+
+
+
+
+    interface State {
+        filter:string,
+        val:string|number
+    }
+    
+    function dateForma(item:any):[State]{
+        const mass:[State] = [{filter:"",val:""}]
+        for(let i=0;i<item.length;i++){
+            if(item[i].value){
+                let newObj = {filter:(item[i].id||"default"),val:item[i].value}
+                mass.push(newObj)
+                
+            }else{
+                console.log("ничего не произошло")
+            }
+        }
+        return mass
+}
+
+
+
+ const massFilter = (state:[State],filMass:[]):[]|null=>{
+    if(state){
+        
+        let result = filMass
+        state.forEach(arr=>{
+            let {val,filter}=arr
+            if(!filter.trim()){
+                filter="default"
+            }
+            result = Filtration(result,filter,val)
+        })
+        console.log("result",result)
+        return result
+    }else{
+        return null
+    }
+    
+}
+
+export const resultMassFilter = (oldDate:[],value:any,hooks:any)=>{
+    let date= dateForma(value)
+    let result = massFilter(date,oldDate)
+    
+    hooks(result)
+}
