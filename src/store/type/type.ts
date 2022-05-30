@@ -2,7 +2,11 @@
 export enum prodActionType {
     AddNewLike = "AddNewLike",
 }
-
+export enum stateRegisterType {
+    Register ="Register",
+    Loginer = "Loginer",
+    Exit="Exit"
+}
 export enum basketActionType{
     AddNewProduct = "AddNewProduct",
     DeleteOneProduct ="DeleteOneProduct",
@@ -31,6 +35,11 @@ export interface ActionsActive{
     name:any,
     img:any,
     like:any,
+}
+export interface userType{
+    user?:string|null,
+    email:string|null,
+    token?:string|null,
 }
 
 export interface SearchActive{

@@ -27,11 +27,11 @@ const Filter:React.FC<Filt> = ({active,change,localFilter,refForm}) => {
                     <BiX style={{fontSize:"30px",cursor:"pointer"}} onClick={change } />
                 </div>
                     <FilterInner name="Цена" >
-                        <label htmlFor="price">price</label>
+                        
                         <input type="text" id="price" />
                     </FilterInner>
                     <FilterInner name="Название" >
-                        <label htmlFor="search">search</label>
+                        
                         <input type="text" id="search" />
                     </FilterInner>
                     <FilterInner name="Цвет" >

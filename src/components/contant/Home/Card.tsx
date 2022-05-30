@@ -8,12 +8,12 @@ interface cards {
     img?:string,
     text?:string,
 } 
-const Card:React.FC<cards> = ({width,height,img,text="/Catalog"}) => {
-  
+const Card:React.FC<cards> = ({img,text="/Catalog"}) => {
+    
     
     return (
         // <div  className={s.card} >
-        <Link style ={{width:width}} className={s.card} to={text}>       
+        <Link  className={s.card} to={text}>       
           <img  src={img} alt="Card" />
         </Link> 
         // </div>

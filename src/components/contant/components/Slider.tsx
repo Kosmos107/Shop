@@ -15,13 +15,8 @@ interface slider {
 }
 
 const Slider:React.FC<slider> = ({children,name,search}) => {
-     const state = TypedSelector(state=>state.product.list)
-     debugger
-     const newState =filterState(state,name,search)
-
-   
-    
-
+    const state = TypedSelector(state=>state.product.list)
+    const newState =filterState(state,name,search)
     const sliderRef = useRef<HTMLDivElement>(null)
     const [leftArrow] = useState(false)
     const [rigthArrow] = useState(false)

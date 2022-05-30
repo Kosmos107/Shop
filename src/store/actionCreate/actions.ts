@@ -1,6 +1,17 @@
 
-import {prodActionType,basketActionType,stateActionType,searchActionType} from "../type/type" 
+import {prodActionType,basketActionType,stateActionType,searchActionType,stateRegisterType} from "../type/type" 
 
+export const Register = (user:string,email:string,token:string)=>{
+    return{
+        type:stateRegisterType.Register,
+        payload:{
+            user:user,
+            email:email,
+            token:token
+        }
+    }
+
+}
 export const AddLike = (id:any,val:boolean)=>{
     return{
         type:prodActionType.AddNewLike,

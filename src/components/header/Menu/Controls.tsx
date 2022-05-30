@@ -5,7 +5,7 @@ import  heart from "../Menu/img/heart.svg"
 import  shop from "../Menu/img/shop.svg"
 import {Link} from "react-router-dom"
 import { TypedSelector } from '../../../Hooks/TypedSelector'
-import {BasketLink,LikeListLink,CatalogLink} from "./type"
+import {BasketLink,LikeListLink,User} from "./type"
 
 
 
@@ -28,8 +28,8 @@ const Controls = () => {
 
     return (
         <ul className={s.Controls__wrapper}>
-            <li key={CatalogLink}>
-                <Link to={CatalogLink} ><img className={s.Controls__img} src={persona} alt="" /></Link>
+            <li key={User}>
+                <Link to={User} ><img className={s.Controls__img} src={persona} alt="" /></Link>
             </li>
             <li key={LikeListLink}>
                 <Link to={LikeListLink}><img className={s.Controls__img} src={heart} alt="" />
